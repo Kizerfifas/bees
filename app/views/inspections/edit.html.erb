@@ -1,0 +1,12 @@
+<% content_for :title, "Editing inspection" %>
+
+<h1>Редактировать осмотр</h1>
+
+<%= render "form", inspection: @inspection %>
+
+<br>
+
+<div>
+  <%= link_to "Показать этот осмотр", @inspection %> |
+  <%= link_to "Назад к осмотрам", inspections_path %>
+</div>

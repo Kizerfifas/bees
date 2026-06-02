@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Inspections" %>
+
+<h1>Inspections</h1>
+
+<div id="inspections">
+  <% @inspections.each do |inspection| %>
+    <%= render inspection %>
+    <p>
+      <%= link_to "Show this inspection", inspection %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New inspection", new_inspection_path %>

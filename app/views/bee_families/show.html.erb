@@ -1,0 +1,6 @@
+<% if @bee_family.avatar_url %>
+  <p><img src="<%= @bee_family.avatar_url %>" alt="Аватар пчелосемьи" style="max-width: 200px; border-radius: 8px;"></p>
+<% else %>
+  <p><img src="/images/default_bee_family.png" alt="Аватар по умолчанию" style="max-width: 200px; border-radius: 8px;"></p>
+<% end %>
+<%= link_to 'Изменить аватар', edit_avatar_bee_family_path(@bee_family) %>

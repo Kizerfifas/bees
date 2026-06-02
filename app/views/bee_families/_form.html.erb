@@ -1,0 +1,44 @@
+<%= form_with(model: bee_family) do |form| %>
+  <% if bee_family.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(bee_family.errors.count, "error") %> не позволили сохранить пчелосемью:</h2>
+      <ul>
+        <% bee_family.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div><%= form.label :name, style: "display: block" %><%= form.text_field :name %></div>
+  <div><%= form.label :description, style: "display: block" %><%= form.text_field :description %></div>
+  <div><%= form.label :family_number, style: "display: block" %><%= form.text_field :family_number %></div>
+  <div><%= form.label :queen_birth_year, style: "display: block" %><%= form.number_field :queen_birth_year %></div>
+  <div><%= form.label :mother_family, style: "display: block" %><%= form.text_field :mother_family %></div>
+  <div><%= form.label :breed, style: "display: block" %><%= form.text_field :breed %></div>
+
+  <div>
+    <%= form.label :honey_productivity, "Продуктивность мёда по годам (JSON)", style: "display: block" %>
+    <%= form.text_area :honey_productivity, value: bee_family.honey_productivity.to_json, rows: 2, cols: 40 %>
+  </div>
+  <div>
+    <%= form.label :wax_productivity, "Продуктивность воска по годам (JSON)", style: "display: block" %>
+    <%= form.text_area :wax_productivity, value: bee_family.wax_productivity.to_json, rows: 2, cols: 40 %>
+  </div>
+  <div>
+    <%= form.label :swarming_dates, "Даты роений (JSON массив дат)", style: "display: block" %>
+    <%= form.text_area :swarming_dates, value: bee_family.swarming_dates.to_json, rows: 2, cols: 40 %>
+  </div>
+  <div>
+    <%= form.label :nucs_count, "Количество отводков по годам (JSON)", style: "display: block" %>
+    <%= form.text_area :nucs_count, value: bee_family.nucs_count.to_json, rows: 2, cols: 40 %>
+  </div>
+  <div>
+    <%= form.label :winter_comments, "Комментарии о зимовках (JSON)", style: "display: block" %>
+    <%= form.text_area :winter_comments, value: bee_family.winter_comments.to_json, rows: 2, cols: 40 %>
+  </div>
+
+  <div><%= form.label :user_id, style: "display: block" %><%= form.text_field :user_id %></div>
+
+  <div><%= form.submit %></div>
+<% end %>

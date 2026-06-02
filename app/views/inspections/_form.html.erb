@@ -1,0 +1,21 @@
+<%= form_with(model: inspection) do |form| %>
+  <% if inspection.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(inspection.errors.count, "error") %> не позволили сохранить осмотр:</h2>
+      <ul>
+        <% inspection.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div><%= form.label :inspected_on, "Дата осмотра", style: "display: block" %><%= form.date_field :inspected_on %></div>
+  <div><%= form.label :total_frames, "Всего рамок", style: "display: block" %><%= form.number_field :total_frames %></div>
+  <div><%= form.label :brood_frames, "Рамок с расплодом", style: "display: block" %><%= form.number_field :brood_frames %></div>
+  <div><%= form.label :honey_frames, "Рамок с медом", style: "display: block" %><%= form.number_field :honey_frames %></div>
+  <div><%= form.label :other_info, "Другие сведения", style: "display: block" %><%= form.text_field :other_info %></div>
+  <div><%= form.label :comment, "Комментарий", style: "display: block" %><%= form.text_field :comment %></div>
+  <div><%= form.label :bee_family_id, "ID пчелосемьи", style: "display: block" %><%= form.text_field :bee_family_id %></div>
+  <div><%= form.submit %></div>
+<% end %>

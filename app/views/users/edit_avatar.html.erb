@@ -1,0 +1,20 @@
+<h1>Изменить фото профиля</h1>
+
+<% if @user.avatar_url %>
+  <p>Текущее фото:</p>
+  <img src="<%= @user.avatar_url %>" alt="Аватар" style="max-width: 200px; border-radius: 8px;">
+<% else %>
+  <p>Текущее фото:</p>
+  <img src="/images/default_user.png" alt="Аватар по умолчанию" style="max-width: 200px; border-radius: 8px;">
+<% end %>
+
+<%= form_with model: @user, url: update_avatar_path, local: true, html: { multipart: true } do |form| %>
+  <div>
+    <%= form.label :avatar, 'Загрузить новое фото' %><br>
+    <%= form.file_field :avatar %>
+  </div>
+  <div>
+    <%= form.submit 'Сохранить' %>
+    <%= link_to 'Назад', profile_path %>
+  </div>
+<% end %>

@@ -1,0 +1,20 @@
+<h1>Изменить аватар пчелосемьи</h1>
+
+<% if @bee_family.avatar_url %>
+  <p>Текущий аватар:</p>
+  <img src="<%= @bee_family.avatar_url %>" alt="Аватар пчелосемьи" style="max-width: 200px; border-radius: 8px;">
+<% else %>
+  <p>Текущий аватар:</p>
+  <img src="/images/default_bee_family.png" alt="Аватар по умолчанию" style="max-width: 200px; border-radius: 8px;">
+<% end %>
+
+<%= form_with model: @bee_family, url: update_avatar_bee_family_path(@bee_family), local: true, html: { multipart: true } do |form| %>
+  <div>
+    <%= form.label :avatar, 'Загрузить новый аватар' %><br>
+    <%= form.file_field :avatar %>
+  </div>
+  <div>
+    <%= form.submit 'Сохранить' %>
+    <%= link_to 'Назад', bee_family_path(@bee_family) %>
+  </div>
+<% end %>

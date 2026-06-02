@@ -1,0 +1,13 @@
+<h1>Профиль пользователя</h1>
+
+<% if @user.avatar_url %>
+  <p><img src="<%= @user.avatar_url %>" alt="Аватар" style="max-width: 200px; border-radius: 8px;"></p>
+<% else %>
+  <p><img src="/images/default_user.png" alt="Аватар по умолчанию" style="max-width: 200px; border-radius: 8px;"></p>
+<% end %>
+
+<p><strong>Email:</strong> <%= @user.email %></p>
+<p><strong>Имя:</strong> <%= @user.name %></p>
+
+<%= link_to 'Редактировать профиль', edit_user_registration_path %> |
+<%= link_to 'Изменить фото', edit_avatar_path %>
